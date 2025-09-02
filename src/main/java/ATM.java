@@ -107,6 +107,7 @@ public class ATM {
         // PIN is correct, proceed with actions.
 
         // Enter action.
+        System.out.print("Enter action(Deposit/Withdraw/Check balance): ");
         String action = sc.nextLine().toLowerCase().trim();
 
         // Evaluating action and then completing the task.
