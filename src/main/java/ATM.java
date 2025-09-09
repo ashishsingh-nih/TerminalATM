@@ -16,12 +16,12 @@ class BankAC {
 
   // Display balance.
   void checkBalance() {
-    System.out.println(">> Available Balance:  ₹ " + balance + "\n\nThanks for visiting.");
+    System.out.printf(">> Available Balance:  ₹ %f%n%n", balance);
   }
 
   // Method to display transaction message.
   void transOutput(String action, double amount) {
-    String message = String.format("Dear %s, your Ac no: %d has been %s ₹%.2f", acHolder, acNo, action, amount);
+    String message = String.format(">> Dear %s, your Ac no: %d has been %s ₹%.2f", acHolder, acNo, action, amount);
     System.out.println(message);
   }
 
@@ -104,39 +104,51 @@ public class ATM {
 
       // Verifying credentials.
       if (enteredPin == pin[acNo - 278000]) {
-        // PIN is correct, proceed with actions.
+      // PIN is correct, proceed with actions.
+        for (int i = 0; i <= 0; i--) {
+          // Enter action.
+          System.out.print("Enter action(Deposit/Withdraw/Check balance): ");
+          String action = sc.nextLine().toLowerCase().trim();
 
-        // Enter action.
-        System.out.print("Enter action(Deposit/Withdraw/Check balance): ");
-        String action = sc.nextLine().toLowerCase().trim();
+          // Evaluating action and then completing the task.
+          double amount;
+          switch (action) {
+            case "deposit":
+              System.out.print("Amount: ");
+              amount = sc.nextDouble();
+              sc.nextLine(); // Consume left over line.
+              account[acNo - 278000].deposit(amount);
+              break;
+            case "withdraw":
+              System.out.print("Amount: ");
+              amount = sc.nextDouble();
+              sc.nextLine(); // Consume left over line.
+              account[acNo - 278000].withdraw(amount);
+              break;
+            case "check balance":
+              account[acNo - 278000].checkBalance();
+              break;
+            case "logout":
+              System.out.println("Thanks for visiting us!");
+              // sc.nextLine();
+              i = 2; // Break from loop and exit the ATM programme.
+              break;
+            default:
+              System.out.println("Invalid action.");
+              sc.nextLine();
+              break;
+          } 
 
-        // Evaluating action and then completing the task.
-        double amount;
-        switch (action) {
-          case "deposit":
-            System.out.print("Amount: ");
-            amount = sc.nextDouble();
-            account[acNo - 278000].deposit(amount);
-            break;
-          case "withdraw":
-            System.out.print("Amount: ");
-            amount = sc.nextDouble();
-            account[acNo - 278000].withdraw(amount);
-            break;
-          case "check balance":
-            account[acNo - 278000].checkBalance();
-            break;
-          default:
-            System.out.println("Invalid action.");
-            break;
-        }
+        } 
+
       } else {
-        System.out.println("Invalid credentials.");
+      System.out.println("Invalid credentials.");
       }
+
     } else {
       System.out.println("Invalid credentials.");
     }
-    sc.close();
 
+    sc.close();
   }
 }
