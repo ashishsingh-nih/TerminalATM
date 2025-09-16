@@ -16,12 +16,12 @@ class BankAC {
 
   // Display balance.
   void checkBalance() {
-    System.out.printf(">> Available Balance:  ₹ %f%n%n", balance);
+    System.out.printf(">> Available Balance:  $%f%n%n", balance);
   }
 
   // Method to display transaction message.
   void transOutput(String action, double amount) {
-    String message = String.format(">> Dear %s, your Ac no: %d has been %s ₹%.2f", acHolder, acNo, action, amount);
+    String message = String.format(">> Dear %s, your Ac no: %d has been %s $%.2f", acHolder, acNo, action, amount);
     System.out.println(message);
   }
 
@@ -74,7 +74,7 @@ public class ATM {
     // Account 04
     account[3] = new BankAC("Pallavi Mehta", 278003, 40000);
     // Account 05
-    account[4] = new BankAC("Saumya Suman", 278004, 790000);
+    account[4] = new BankAC("Prashant Kumar", 278004, 790000);
 
     // PIN of account. (data)
     pin[0] = 1234;
